@@ -9,10 +9,24 @@ import "bootstrap"
 import '../styles/index.css'
 
 // components
-import Home from './components/Home';
+import Reloj from './components/Reloj';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+let root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+let contador = 0;
+
+setInterval(() => {
+  console.log('intervalo');
+
+  const cuatro = Math.floor(contador / 1000);
+  const tres = Math.floor(contador / 100);
+  const dos = Math.floor(contador / 10);
+  const uno = Math.floor(contador / 1);
+
+  contador++;
+
+  root.render(
+    <Reloj numeroUno={uno} numeroDos={dos} numeroTres={tres} numeroCuatro={cuatro}/>
+  );
+}, 1000);
